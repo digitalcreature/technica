@@ -9,7 +9,7 @@
         if (navigator.geolocation) {
           navigator.geolocation.watchPosition(function(location) {
             $("h1.position")
-              .append(
+              .contents(
                 "<p>Latitude: " + location.coords.latitude + "</p>",
                 "<p>Longitude: " + location.coords.longitude + "</p>",
                 "<p>Altitude: " + location.coords.altitude + "</p>",
