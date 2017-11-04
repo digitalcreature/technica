@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script>
+      function getLocation(loccallback, errorcallback) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(loccallback, errorcallback)
+        }
+        else {
+          errorcallback()
+        }
+      }
+      $(document).ready(function() {
+        var i = 0;
+        window.setInterval(function() {
+          getLocation(function(location) {
+            $("h1.position").html(
+              "Latitude: " + location.coords.latitude + 
+              "<br>Longitude: " + location.coords.longitude
+            )
+          }, function() {
+
+          })
+          i ++
+        }, 500)
+      })
+    </script>
+  </head>
+  <body>
+    <h1 class="position"></h1>
+  </body>
+</html>
