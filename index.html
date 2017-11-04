@@ -5,27 +5,20 @@
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
     <script>
-      function getLocation(loccallback, errorcallback) {
+      $(document).ready(function() {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(loccallback, errorcallback)
+          navigator.geolocation.watchPosition(function(location) {
+            $("h1.position")
+              .append(
+                "<p>Latitude: " + location.coords.latitude + "</p>",
+                "<p>Longitude: " + location.coords.longitude + "</p>",
+                "<p>Altitude: " + location.coords.altitude + "</p>",
+                "<p>Accuracy: " + location.coords.accuracy + "</p>")
+          })
         }
         else {
-          errorcallback()
+          $("h1.position").text("Geolocation Not Supported")
         }
-      }
-      $(document).ready(function() {
-        var i = 0;
-        window.setInterval(function() {
-          getLocation(function(location) {
-            $("h1.position").html(
-              "Latitude: " + location.coords.latitude + 
-              "<br>Longitude: " + location.coords.longitude
-            )
-          }, function() {
-
-          })
-          i ++
-        }, 500)
       })
     </script>
   </head>
