@@ -9,10 +9,10 @@
         if (navigator.geolocation) {
           navigator.geolocation.watchPosition(function(location) {
             $("h1.position")
-              .contents(
-                "<p>Latitude: " + location.coords.latitude + "</p>",
-                "<p>Longitude: " + location.coords.longitude + "</p>",
-                "<p>Altitude: " + location.coords.altitude + "</p>",
+              .html(
+                "<p>Latitude: " + location.coords.latitude + "</p>"+
+                "<p>Longitude: " + location.coords.longitude + "</p>"+
+                "<p>Altitude: " + location.coords.altitude + "</p>"+
                 "<p>Accuracy: " + location.coords.accuracy + "</p>")
           })
         }
